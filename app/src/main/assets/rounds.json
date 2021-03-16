@@ -1,0 +1,100 @@
+{
+  "rounds": [
+    {
+      "uid": 100001,
+      "mode_name": "simple",
+      "mode_id": 124231,
+      "round_name": "round_1",
+      "round_id": 243241,
+      "status": "0star"
+    },
+    {
+      "uid": 100002,
+      "mode_name": "simple",
+      "mode_id": 124231,
+      "round_name": "round_2",
+      "round_id": 243242,
+      "status": "0star"
+    },
+    {
+      "uid": 100003,
+      "mode_name": "simple",
+      "mode_id": 124231,
+      "round_name": "round_3",
+      "round_id": 243243,
+      "status": "0star"
+    },
+    {
+      "uid": 100004,
+      "mode_name": "try_limited",
+      "mode_id": 124232,
+      "round_name": "round_1",
+      "round_id": 243241,
+      "status": "0star"
+    },
+    {
+      "uid": 100005,
+      "mode_name": "try_limited",
+      "mode_id": 124232,
+      "round_name": "round_2",
+      "round_id": 243242,
+      "status": "0star"
+    },
+    {
+      "uid": 100006,
+      "mode_name": "try_limited",
+      "mode_id": 124232,
+      "round_name": "round_3",
+      "round_id": 243243,
+      "status": "0star"
+    },
+    {
+      "uid": 100007,
+      "mode_name": "time_limited",
+      "mode_id": 124233,
+      "round_name": "round_1",
+      "round_id": 243241,
+      "status": "0star"
+    },
+    {
+      "uid": 100008,
+      "mode_name": "time_limited",
+      "mode_id": 124233,
+      "round_name": "round_2",
+      "round_id": 243242,
+      "status": "0star"
+    },
+    {
+      "uid": 100009,
+      "mode_name": "time_limited",
+      "mode_id": 124233,
+      "round_name": "round_3",
+      "round_id": 243243,
+      "status": "0star"
+    },
+    {
+      "uid": 100010,
+      "mode_name": "one_try",
+      "mode_id": 124234,
+      "round_name": "round_1",
+      "round_id": 243241,
+      "status": "0star"
+    },
+    {
+      "uid": 100011,
+      "mode_name": "one_try",
+      "mode_id": 124234,
+      "round_name": "round_2",
+      "round_id": 243242,
+      "status": "0star"
+    },
+    {
+      "uid": 100012,
+      "mode_name": "one_try",
+      "mode_id": 124234,
+      "round_name": "round_3",
+      "round_id": 243243,
+      "status": "0star"
+    }
+  ]
+}
