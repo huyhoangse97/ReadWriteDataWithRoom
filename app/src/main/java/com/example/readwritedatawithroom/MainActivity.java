@@ -1,9 +1,12 @@
 package com.example.readwritedatawithroom;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 
 import com.google.gson.Gson;
@@ -12,7 +15,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity {
     private Gson gson = new Gson();
@@ -20,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Round> rounds;
     private ImageButton ib_simple, ib_try_limited, ib_time_limited, ib_one_try;
     RoundDao roundDao;
+    List<User> users2 = new ArrayList<User>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,36 +54,45 @@ public class MainActivity extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "project_label").fallbackToDestructiveMigration().build();
         UserDao userDao = db.userDao();
-//        roundDao = db.roundDao();
 
-        User user = new User();
-        new UserAsyncTask(this, user, userDao).execute();
+//        User user = new User();
+//        new UserAsyncTask(this, user, userDao).execute();
 
-//        View.OnClickListener modeClickListener = new View.OnClickListener(){
+        int userCount = 4;
+        List<User> users = new ArrayList<User>();
+        for (int idx = 0; idx < userCount; idx++){
+            User user = new User();
+            users.add(user);
+        }
+
+        Runnable insertUsersRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (users.size() != 0){
+                    for (int idx = 0; idx < users.size(); idx++){
+                        User user = users.get(idx);
+                        userDao.insertAll(user);
+                    }
+                }
+            }
+        };
+
+        Executor userExecutor = new UserExecutor();
+        userExecutor.execute(insertUsersRunnable);
+
+//        Runnable getUsersRunnable = new Runnable() {
 //            @Override
-//            public void onClick(View v){
-//                ImageButton imageButton = (ImageButton) v;
-//                List<Round> rounds1;
-//                rounds1 = roundDao.getRoundsByModeName("simple");
-//                for (int idx = 0; idx < rounds1.size(); idx++){
-//                    Round currentRound = new Round();
-//                    currentRound = rounds1.get(idx);
-//                    currentRound.setModeId(imageButton.getId());
-//                    roundDao.insert(currentRound);
-//                }
-//
-//                List<Round> rounds2 = roundDao.getRoundsByModeName("simple");
-//                for (int idx = 0; idx < rounds2.size(); idx++){
-//                    int modeId = ((Round)rounds2.get(idx)).getModeId();
-//                    Log.e("MainActivity", Integer.toString(modeId));
-//                }
-//
-//                Intent intent = new Intent();
-//                intent.setClass(MainActivity.this, RoundActivity.class);
-//                startActivity(intent);
+//            public void run() {
+//                users2 = userDao.getAll();
 //            }
 //        };
-//        ib_simple.setOnClickListener(modeClickListener);
+//
+//        userExecutor.execute(getUsersRunnable);
+//
+//        for (int idx = 0; idx < users2.size(); idx++){
+//            User newUser = users2.get(idx);
+//            Log.d("MainActivity", Integer.toString(idx) + " : " + newUser.getName());
+//        }
     }
 
     @Override
