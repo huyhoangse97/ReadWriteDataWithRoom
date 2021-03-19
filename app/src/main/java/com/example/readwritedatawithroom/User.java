@@ -4,10 +4,18 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity (tableName = "USER")
 public class User {
     @PrimaryKey (autoGenerate = true)
     public int uid;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 
     @ColumnInfo(name = "first_name")
     public String firstName;
@@ -31,5 +39,13 @@ public class User {
 
     public int getUid() {
         return this.uid;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 }

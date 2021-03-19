@@ -19,12 +19,19 @@ public class Round {
     private String status; //lock, 0star, 1star, 3star;
 
     public Round(){
-        uid = 100001;
         modeName = "simple";
-        modeId = 124231;
+        modeId = 1;
         roundName = "round_1";
-        roundId = 243241;
+        roundId = 1;
         status = "0star";
+    }
+
+    public Round(String modeName, int modeId, String roundName, int roundId, String status){
+        this.modeName = modeName;
+        this.modeId = modeId;
+        this.roundName = roundName;
+        this.roundId = roundId;
+        this.status = status;
     }
 
     public void setUid(int uid) {
